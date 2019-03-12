@@ -1,5 +1,5 @@
 import subprocess
-from prettytable import PrettyTable
+
 import json
 import platform
 
@@ -13,7 +13,7 @@ def createjson(arrayDpkg):
                                                      arrayDpkg[Lindex][3]]})
         jsonArray.append(my_json)
 
-        return my_json
+        return jsonArray
 
 
 def processingData(dataarray):
@@ -33,7 +33,6 @@ def displayTable(data):
     for Lindex in range(0, len(data) - 1):
 
         print(Lindex, data[Lindex][1], "ver: {} ".format(data[Lindex][2]), data[Lindex][3])
-
 
 
 if "__main__" == __name__:
