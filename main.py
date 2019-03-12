@@ -5,7 +5,7 @@ import platform
 
 
 def createjson(arrayDpkg):
-    """RETURN JSON"""
+    """RETURN AN JSON"""
     jsonArray = []
 
     for Lindex in range(0, len(arrayDpkg) - 1):
@@ -28,12 +28,13 @@ def processingData(dataarray):
     return ClearList
 
 
-def displayTable(data):
+def displayTable(data, id, column1, column2, column3):
+    instanceTable = PrettyTable()
+    instanceTable.field_names = ["{}".format(id), "{}".format(column1), "{}".format(column2), "{}".format(column3)]
 
     for Lindex in range(0, len(data) - 1):
-
-        print(Lindex, data[Lindex][1], "ver: {} ".format(data[Lindex][2]), data[Lindex][3])
-
+        instanceTable.add_row([Lindex, data[Lindex][1], data[Lindex][2], data[Lindex][3]])
+    print(instanceTable)
 
 
 if "__main__" == __name__:
@@ -65,11 +66,11 @@ if "__main__" == __name__:
             createjson(ClearList)
             print()
             if inp == 'y':
-                displayTable(ClearList)
+                displayTable(ClearList, "id", "Program", "Version", "Arch")
             else:
                 flag = False
                 exit(-1)
 
-            inp = input("Do you want display all?[y/n]:")
+            inp = input("Do you want close all?[y/n]:")
         else:
-            exit(-1)
+            pass
